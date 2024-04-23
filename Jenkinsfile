@@ -13,7 +13,7 @@ pipeline {
                 sh "mvn test"
                 
                 // Notify Slack channel about job start
-                slackSend(channel: 'youtubejenkins', message: 'Job Started')
+                slackSend(channel: 'test', message: 'Job Started')
             }
         }
         
