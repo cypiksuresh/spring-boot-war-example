@@ -34,8 +34,8 @@ pipeline {
         }
         
         stage("Deploy on Prod") {
-            // Ask for manual input before deploying to Production
             steps {
+                // Ask for manual input before deploying to Production
                 input {
                     message "Should we continue?"
                     ok "Yes, we should"
