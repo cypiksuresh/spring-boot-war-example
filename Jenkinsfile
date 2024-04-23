@@ -13,7 +13,7 @@ pipeline {
                 sh "mvn test"
                 
                 // Notify Slack channel about job start
-                slackSend(channel: 'test', message: 'Job Started')
+                slackSend(channel: 'jenkins', message: 'Job Started')
             }
         }
         
@@ -56,12 +56,12 @@ pipeline {
         success {
             echo "Pipeline executed successfully."
             // Notify Slack channel about successful execution
-            slackSend(channel: 'test', message: 'Success')
+            slackSend(channel: 'jenkins', message: 'Success')
         }
         failure {
             echo "Pipeline execution failed."
             // Notify Slack channel about failed execution
-            slackSend(channel: 'test', message: 'Job Failed')
+            slackSend(channel: 'jenkins', message: 'Job Failed')
         }
     }
 }
