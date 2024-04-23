@@ -34,13 +34,13 @@ pipeline {
         }
         
         stage("Deploy on Prod") {
+            // Ask for manual input before deploying to Production
+            input {
+                message "Should we continue?"
+                ok "Yes, we should"
+            }
+            
             steps {
-                // Ask for manual input before deploying to Production
-                input {
-                    message "Should we continue?"
-                    ok "Yes, we should"
-                }
-                
                 // Deploy to Production environment using the specified credentials and URL
                 deploy adapters: [tomcat9(credentialsId: 'tomcatserverdetails1', path: '', url: 'http://34.27.4.180:8080')],
                        contextPath: '/app',
