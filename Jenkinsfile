@@ -35,12 +35,12 @@ pipeline {
         
         stage("Deploy on Prod") {
             // Ask for manual input before deploying to Production
-            input {
-                message "Should we continue?"
-                ok "Yes, we should"
-            }
-            
             steps {
+                input {
+                    message "Should we continue?"
+                    ok "Yes, we should"
+                }
+                
                 // Deploy to Production environment using the specified credentials and URL
                 deploy adapters: [tomcat9(credentialsId: 'tomcatserverdetails1', path: '', url: 'http://34.27.4.180:8080')],
                        contextPath: '/app',
@@ -56,12 +56,12 @@ pipeline {
         success {
             echo "Pipeline executed successfully."
             // Notify Slack channel about successful execution
-            slackSend(channel: 'youtubejenkins', message: 'Success')
+            slackSend(channel: 'test', message: 'Success')
         }
         failure {
             echo "Pipeline execution failed."
             // Notify Slack channel about failed execution
-            slackSend(channel: 'youtubejenkins', message: 'Job Failed')
+            slackSend(channel: 'test', message: 'Job Failed')
         }
     }
 }
