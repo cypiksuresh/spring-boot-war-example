@@ -27,8 +27,7 @@ pipeline {
         stage("Deploy on Test") {
             steps {
                 // Deploy to Test environment using the specified credentials and URL
-                deploy adapters: [tomcat9(credentialsId: 'tomcatserverdetails112233', path: '', url: 'http://35.225.37.137:8080')], contextPath: '/sk', war: '**/*.war'
-            }
+deploy adapters: [tomcat9(credentialsId: 'suresh1', path: '', url: 'http://35.225.37.137:8080')], contextPath: '/sk', war: '**/*.war'            }
         }
         
         stage("Deploy on Prod") {
@@ -40,8 +39,7 @@ pipeline {
                 }
                 
                 // Deploy to Production environment using the specified credentials and URL
-                deploy adapters: [tomcat9(credentialsId: 'tomcatserverdetails112233', path: '', url: 'http://34.27.4.180:8080')], contextPath: '/sk', war: '**/*.war'
-            }
+deploy adapters: [tomcat9(credentialsId: 'suresh1', path: '', url: 'http://34.27.4.180:8080')], contextPath: '/sk', war: '**/*.war'            }
         }
     }
     
